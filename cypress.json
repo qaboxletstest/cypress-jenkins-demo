@@ -1,0 +1,16 @@
+{
+    "$schema": "https://on.cypress.io/cypress.schema.json",
+    "video": false,
+    "reporter": "cypress-multi-reporters",
+    "screenshotsFolder": "cypress/reports/mochareports/assets",
+    "reporterOptions": {
+        "reporterEnabled": "mochawesome",
+        "mochawesomeReporterOptions": {
+            "reportDir": "cypress/reports/mocha",
+            "quite": true,
+            "overwrite": false,
+            "html": false,
+            "json": true
+        }
+    }
+}
