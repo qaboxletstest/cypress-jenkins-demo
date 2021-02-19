@@ -1,9 +1,10 @@
 1. Run Cypress Tests present Locally and publish MOCHAWESOME HTML Report
 a. Create a Freestyle Project
-b. In General click Advanced button, select Use custom workspace and mention the project directory
+b. In General click Advanced button, select Use custom workspace and mention the project directory, for example
         C:\Cypress-Jenkins\Local\cypress-jenkins-demo-master
 c. Go to Build, Click on Add build step, select "Execute Window Batch Command" and add "npm test"
 d. Go to Post-build Actions, Click on Add post-build action, select "Publish HTML reports", 
+        Install PUBLISH HTML REPORT plugin(https://plugins.jenkins.io/htmlpublisher/), if not already done
         Set 
             HTML directory to archive = cypress/reports/mochareports
             Index pages[s] = report.html
@@ -14,13 +15,14 @@ a. Create a Freestyle Project
 b. In General click Advanced button, select 
     GitHub project
         https://github.com/qaboxletstest/cypress-jenkins-demo.git
-    Use custom workspace and mention the project directory
-        C:\Cypress-Jenkins\Local\cypress-jenkins-demo-master
+    Use custom workspace and mention the project directory, for example
+        C:\Cypress-Jenkins\GitHub
 c. Go to Source Code Management, select "Git"
         Set 
             Repositories =====> Repository URL = https://github.com/qaboxletstest/cypress-jenkins-demo.git
 d. Go to Build, Click on Add build step, select "Execute Window Batch Command" and add "npm install && npm test"
 e. Go to Post-build Actions, Click on Add post-build action, select "Publish HTML reports", 
+        Install PUBLISH HTML REPORT plugin(https://plugins.jenkins.io/htmlpublisher/), if not already done
         Set 
             HTML directory to archive = cypress/reports/mochareports
             Index pages[s] = report.html
