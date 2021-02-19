@@ -26,3 +26,26 @@ e. Go to Post-build Actions, Click on Add post-build action, select "Publish HTM
         Set 
             HTML directory to archive = cypress/reports/mochareports
             Index pages[s] = report.html
+            
+            
+NOTE - CSS is stripped out because of the Content Security Policy in Jenkins. The default rule is set to:
+sandbox; default-src 'none'; img-src 'self'; style-src 'self';
+
+This rule set results in the following:
+
+No JavaScript allowed at all
+No plugins (object/embed) allowed
+No inline CSS, or CSS from other sites allowed
+No images from other sites allowed
+No frames allowed
+No web fonts allowed
+No XHR/AJAX allowed, etc.
+
+To relax this rule, go to
+
+Manage Jenkins->
+Tools and Actions -> Script Console
+
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
+and Press Run. If you see the output as 'Result:' below "Result" header then the protection disabled. Re-Run your build and you can see that the new HTML files archived will have the CSS enabled.
