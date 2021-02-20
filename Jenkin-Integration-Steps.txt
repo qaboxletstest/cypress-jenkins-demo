@@ -45,8 +45,24 @@
                 Install PUBLISH HTML REPORT plugin(https://plugins.jenkins.io/htmlpublisher/), if not already done
                 Set 
                     HTML directory to archive = cypress/reports/mochareports
+                    Index pages[s] = report.html                 
+                    
+ 4. Fetch Cypress project from GitHub, Build Jenkins Pipeline
+        a. Create a Pipeline Project
+        b. In General, select 
+            GitHub project
+                https://github.com/qaboxletstest/cypress-jenkins-demo.git
+            click Advanced button, select "Use custom workspace" and mention the project directory, for example
+                C:\Cypress-Jenkins\GitHub
+        c. Go to Source Code Management, select "Git"
+                Set 
+                    Repositories =====> Repository URL = https://github.com/qaboxletstest/cypress-jenkins-demo.git
+        d. Go to Build, Click on Add build step, select "Execute Window Batch Command" and add "npm install && npm test"
+        e. Go to Post-build Actions, Click on Add post-build action, select "Publish HTML reports", 
+                Install PUBLISH HTML REPORT plugin(https://plugins.jenkins.io/htmlpublisher/), if not already done
+                Set 
+                    HTML directory to archive = cypress/reports/mochareports
                     Index pages[s] = report.html
-            
             
 NOTE - CSS is stripped out because of the Content Security Policy in Jenkins. The default rule is set to:
 sandbox; default-src 'none'; img-src 'self'; style-src 'self';
